@@ -26,14 +26,14 @@ jobs:
 
     - name: Build with Maven
       run: mvn -B package --file myapp/pom.xml
-     
-    - name: compile app
-      run:  mvn compile
+    
 
     - name: Publish to GitHub Packages Apache Maven
       run: mvn -X -version 
            mvn test
            mvn deploy -s $GITHUB_WORKSPACE/settings.xml
+           java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App
+
       env:
         GITHUB_TOKEN: ${{ github.token }}
 
