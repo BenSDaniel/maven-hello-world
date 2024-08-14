@@ -30,9 +30,8 @@ jobs:
 
     - name: Publish to GitHub Packages Apache Maven
       run: mvn -X -version 
-           mvn test
            mvn deploy -s $GITHUB_WORKSPACE/settings.xml
-           java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App
+           java -cp java  /home/runner/work/maven-hello-world/maven-hello-world/myapp/target/myapp-1.0-SNAPSHOT.jar
 
       env:
         GITHUB_TOKEN: ${{ github.token }}
