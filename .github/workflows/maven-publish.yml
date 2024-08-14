@@ -25,20 +25,18 @@ jobs:
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Build with Maven
-      run: cd myapp,
-           mvn -B package --file pom.xml,
-           java -cp target/myapp-1.0-SNAPSHOT.jar com.myapp.app.App
-
+      run: mvn -B package --file myapp/pom.xml,
+           
+    - name: version
+      run: mvn -X -version 
     
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn -X -version 
-           mvn deploy -s $GITHUB_WORKSPACE/settings.xml
+      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
+           
 
     - name: run app
-      run: cd myapp
-           mvn package
-          java -cp target/myapp-1.0-SNAPSHOT.jar com.myapp.app.App
+      run: java -cp target/myapp-1.0-SNAPSHOT.jar com.myapp.app.App
 
          
       env:
