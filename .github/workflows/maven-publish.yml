@@ -23,7 +23,6 @@ jobs:
         distribution: 'temurin'
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
-    - run: java -cp java myapp 
 
     - name: Build with Maven
       run: mvn -B package --file myapp/pom.xml
@@ -32,9 +31,13 @@ jobs:
     - name: Publish to GitHub Packages Apache Maven
       run: mvn -X -version 
            mvn deploy -s $GITHUB_WORKSPACE/settings.xml
-           e
+           java -cp java myapp 
            java -cp java  /home/runner/work/maven-hello-world/maven-hello-world/myapp/target/myapp-1.0-SNAPSHOT.jar
 
+    - name: run app
+      run: java -cp java myapp 
+           java -cp java  /home/runner/work/maven-hello-world/maven-hello-world/myapp/target/myapp-1.0-SNAPSHOT.jar
+         
       env:
         GITHUB_TOKEN: ${{ github.token }}
 
