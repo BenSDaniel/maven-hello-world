@@ -32,8 +32,8 @@ jobs:
       run: mvn -X -version 
     
 
-    - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
+   # - name: Publish to GitHub Packages Apache Maven
+    #  run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
            
 
     - name: run app
