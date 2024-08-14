@@ -33,7 +33,9 @@ jobs:
            mvn deploy -s $GITHUB_WORKSPACE/settings.xml
 
     - name: run app
-      run: mvn exec:java
+      run: cd myapp
+           mvn compile
+          java -cp target/classes com.myapp.app.App
 
          
       env:
