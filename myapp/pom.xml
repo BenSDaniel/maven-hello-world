@@ -51,7 +51,19 @@
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
 	  <version>3.0.2</version>
-          <configuration>
+	<plugin>
+  		<artifactId>maven-jar-plugin</artifactId>
+ 		 <version>3.0.2</version>
+  		<configuration>
+    		<archive>
+     		 <manifest>
+        	<addClasspath>true</addClasspath>
+        	<mainClass>com.myapp.App</mainClass>
+     		 </manifest>
+    		</archive>
+		  </configuration>
+	</plugin>
+	<configuration>
     <archive>
       <manifest>
         <addClasspath>true</addClasspath>
