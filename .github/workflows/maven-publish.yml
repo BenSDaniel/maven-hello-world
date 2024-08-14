@@ -33,7 +33,8 @@ jobs:
            mvn deploy -s $GITHUB_WORKSPACE/settings.xml
 
     - name: run app
-      run: java -cp java  /home/runner/work/maven-hello-world/maven-hello-world/myapp/target/myapp-1.0-SNAPSHOT.jar
+      run: mvn exec:java
+
          
       env:
         GITHUB_TOKEN: ${{ github.token }}
