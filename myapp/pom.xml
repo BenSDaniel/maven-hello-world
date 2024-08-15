@@ -106,8 +106,8 @@
           <revisionOnScmFailure>unknownbuild</revisionOnScmFailure>   
         </configuration>
       </plugin>    
-    <finalName>${project.artifactId}-${project.version}.${buildNumber}</finalName>
       </plugins>
     </pluginManagement>
+   <finalName>${project.artifactId}-${project.version}.${buildNumber}</finalName>
   </build>
 </project>
