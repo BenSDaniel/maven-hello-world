@@ -29,7 +29,7 @@ jobs:
 
            
     - name: version
-      run: mvn -X -version 
+      run: mavn compile 
     
 
    # - name: Publish to GitHub Packages Apache Maven
@@ -37,7 +37,7 @@ jobs:
            
 
     - name: run app
-      run: java -cp target/myapp-1.0-SNAPSHOT.jar com.myapp.App
+      run: java -cp myapp/target/myapp-1.0.0.null.jar com.myapp.App
 
          
       env:
