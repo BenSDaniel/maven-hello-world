@@ -32,7 +32,7 @@ jobs:
       # mvn -B package --file myapp/pom.xml
 
            
-    -# name: version
+     # -name: version
      # run: cd myapp
      #      mvn compile
      #      java -cp target/classes com.myapp.app.App 
