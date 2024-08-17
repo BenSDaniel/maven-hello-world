@@ -25,11 +25,11 @@ jobs:
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
 
-    - name: compile
-      run: |
-          cd myapp
-          mvn compile
-          java -cp target/classes com.myapp.app.App
+ #   - name: compile
+  #    run: |
+   #       cd myapp
+    #      mvn compile
+     #     java -cp target/classes com.myapp.app.App
           
     - name: Build with Maven
       run: | 
