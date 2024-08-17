@@ -35,7 +35,7 @@ jobs:
       run: | 
            cd myapp
            mvn package
-           java -cp target/myapp-1.0.0.null.jar src/main/java/com/myapp/app/App.java
+           java -cp target/myapp-1.0.0.null.jar
       # mvn -B package --file myapp/pom.xml
 
            
