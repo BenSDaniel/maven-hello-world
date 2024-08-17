@@ -24,11 +24,18 @@ jobs:
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
+
+    - name: compile
+      run: |
+          cd myapp
+          mvn compile
+          java -cp target/classes com.myapp.app.App
+          
     - name: Build with Maven
       run: | 
            cd myapp
            mvn package
-           java -cp target/myapp-1.0.0.null.jar com.myapp.app.App
+           java -cp target/myapp-1.0.0.null.jar src/main/java/com/myapp/app/App.java
       # mvn -B package --file myapp/pom.xml
 
            
