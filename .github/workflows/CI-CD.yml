@@ -50,6 +50,6 @@ jobs:
     - name: Login to Docker Hub
       run: docker login -u bendaniel -p ${{ secrets.DOCKER_PASSWORD }}
     - name: Build Container image with tag
-      run: docker build -t {{ secrets.DOCKER_REPO }}:github-actions-artifact .
+      run: docker build -t ${{ secrets.DOCKER_REPO }}:github-actions-artifact .
     - name: Publish Docker image
       run: docker push {{ secrets.DOCKER_REPO }}:github-actions-artifact
