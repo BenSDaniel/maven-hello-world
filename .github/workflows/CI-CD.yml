@@ -7,6 +7,7 @@ on:
   pull_request:
     branches: [ "master" ]
 
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,7 +24,7 @@ jobs:
         cd myapp
         currentVer=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
         nextVer=${currentVer%.*}.$((${currentVer##*.}+1))
-        echo "next version = $nextVer" >> "$GITHUB_ENV"
+        echo "next version = $nextVer"
         echo $nextVer >> version.txt
         mvn versions:set -DnewVersion=$nextVer
 
@@ -31,9 +32,24 @@ jobs:
       run: |
            mvn -B clean package --file myapp/pom.xml
            mkdir artifact && cp myapp/target/*.jar artifact
-            
+           
     - name: artifact
       uses: actions/upload-artifact@v3
       with:
            name: github-actions-artifact
            path: artifact
+
+
+  build-docker-image:
+    name: create-docker-image
+    runs-on: ubuntu-latest
+    needs: build    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Login to Docker Hub
+      run: docker login -u bendaniel -p ${{ secrets.DOCKER_PASSWORD }}
+    - name: Build Container image with tag
+      run: docker build -t {{ secrets.DOCKER_REPO }}:github-actions-artifact .
+    - name: Publish Docker image
+      run: docker push {{ secrets.DOCKER_REPO }}:github-actions-artifact
